@@ -4,27 +4,316 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Tools Hub</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            animation: fadeIn 1s;
+            border: 10px solid;
+            border-image-slice: 1;
+            border-image-source: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+            animation: borderRotation 5s infinite linear;
+        }
+        .header {
+            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: slideDown 1s;
+        }
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+        .search-container input {
+            width: 50%;
+            padding: 0.5rem;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            transition: all 0.3s;
+        }
+        .search-container input:focus {
+            border-color: #6200ea;
+            box-shadow: 0 0 8px rgba(98, 0, 234, 0.6);
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 2rem;
+        }
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 1rem;
+            padding: 1rem;
+            text-align: center;
+            width: 200px;
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .card a {
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+            transition: color 0.3s;
+        }
+        .card a:hover {
+            color: #6200ea;
+        }
+        .footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-50px); }
+            to { transform: translateY(0); }
+        }
+
+        @keyframes borderRotation {
+            0% { border-image-source: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D); }
+            100% { border-image-source: linear-gradient(405deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D); }
+        }
+    </style>
 </head>
 <body>
-    <nav>
-        <ul class="menu">
-            <li><a href="#home" class="tab-link" data-tab="home">Home</a></li>
-            <li><a href="#tools" class="tab-link" data-tab="tools">Tools</a></li>
-            <li><a href="#about" class="tab-link" data-tab="about">About</a></li>
-            <li><a href="#contact" class="tab-link" data-tab="contact">Contact</a></li>
-        </ul>
-    </nav>
+    <div class="header">
+        <h1>AI Tools Hub</h1>
+    </div>
     <div class="search-container">
-        <input type="text" id="search-bar" placeholder="Search AI Tools...">
-        <ul id="search-results"></ul>
+        <input type="text" id="search" placeholder="Search AI tools..." onkeyup="filterTools()">
     </div>
-    <div id="tab-content">
-        <div id="home" class="tab-content">Welcome to the AI Tools Hub!</div>
-        <div id="tools" class="tab-content">Here are some AI tools.</div>
-        <div id="about" class="tab-content">About our AI Tools Hub.</div>
-        <div id="contact" class="tab-content">Contact us for more information.</div>
+    <div class="container" id="tools-container">
+        <!-- Example AI Tools -->
+        <div class="card">
+            <a href="https://craiyon.com/">
+                <img src="https://example.com/logo1.jpg" alt="AI Tool 1">
+                Craiyon
+            </a>
+        </div>
+        <div class="card">
+            <a href="https://grammarlygo.com/">
+                <img src="https://example.com/tool2-image.jpg" alt="AI Tool 2">
+                GrammarlyGO
+            </a>
+        </div>
+        <div class="card">
+            <a href="https://docalysis.com/">
+                <img src="https://example.com/tool3-image.jpg" alt="AI Tool 3">
+                Docalysis
+            </a>
+        </div>
+        <div class="card">
+            <a href="https://predis.ai/">
+                <img src="https://example.com/tool4-image.jpg" alt="AI Tool 4">
+                Predis AI
+            </a>
+        </div>
+        <div class="card">
+            <a href="https://more.graphics/">
+                <img src="https://example.com/tool5-image.jpg" alt="AI Tool 5">
+                More Graphics
+            </a>
+        </div>
+        <div class="card">
+            <a href="https://deepgram.com/">
+                <img src="https://example.com/tool6-image.jpg" alt="AI Tool 6">
+                DeepGram
+            </a>
+        </div>
+        <div class="card">
+            <a href="https://example.com/tool7">
+                <img src="https://example.com/tool7-image.jpg" alt="AI Tool 7">
+                AI Tool 7
+            </a>
+        </div>
+        <div class="card">
+            <a href="https://example.com/tool8">
+                <img src="https://example.com/tool8-image.jpg" alt="AI Tool 8">
+                AI Tool 8
+            </a>
+        </div>
+        <div class="card">
+            <a href="https://example.com/tool9">
+                <img src="https://example.com/tool9-image.jpg" alt="AI Tool 9">
+                AI Tool 9
+            </a>
+        </div>
+        <div class="card">
+            <a href="https://example.com/tool10">
+                <img src="https://example.com/tool10-image.jpg" alt="AI Tool 10">
+                AI Tool 10
+            </a>
+        </div>
+        <div class="card">
+            <a href="https://example.com/tool11">
+                <img src="https://example.com/tool11-image.jpg" alt="AI Tool 11">
+                AI Tool 11
+            </a>
+        </div>
+        <div class="card">
+            <a href="https://example.com/tool12">
+                <img src="https://example.com/tool12-image.jpg" alt="AI Tool 12">
+                AI Tool 12
+            </a>
+        </div>
+        <div class="card">
+            <a href="https://example.com/tool13">
+                <img src="https://example.com/tool13-image.jpg" alt="AI Tool 13">
+                AI Tool 13
+            </a>
+        </div>
+        <div class="card">
+            <a href="https://example.com/tool14">
+                <img src="https://example.com/tool14-image.jpg" alt="AI Tool 14">
+                AI Tool 14
+            </a>
+        </div>
+        <div class="card">
+            <a href="https://example.com/tool15">
+                <img src="https://example.com/tool15-image.jpg" alt="AI Tool 15">
+                AI Tool 15
+            </a>
+        </div>
+        <div class="card">
+            <a href="https://example.com/tool16">
+                <img src="https://example.com/tool16-image.jpg" alt="AI Tool 16">
+                AI Tool 16
+            </a>
+        </div>
+        <div class="card">
+            <a href="https://example.com/tool17">
+                <img src="https://example.com/tool17-image.jpg" alt="AI Tool 17">
+                AI Tool 17
+            </a>
+        </div>
+        <div class="card">
+            <a href="https://example.com/tool18">
+                <img src="https://example.com/tool18-image.jpg" alt="AI Tool 18">
+                AI Tool 18
+            </a>
+        </div>
+        <div class="card">
+            <a href="https://example.com/tool19">
+                <img src="https://example.com/tool19-image.jpg" alt="AI Tool 19">
+                AI Tool 19
+            </a>
+        </div>
+        <div class="card">
+            <a href="https://example.com/tool20">
+                <img src="https://example.com/tool20-image.jpg" alt="AI Tool 20">
+                AI Tool 20
+            </a>
+        </div>
+        <div class="card">
+            <a href="https://example.com/tool21">
+                <img src="https://example.com/tool21-image.jpg" alt="AI Tool 21">
+                AI Tool 21
+            </a>
+        </div>
+        <div class="card">
+            <a href="https://example.com/tool22">
+                <img src="https://example.com/tool22-image.jpg" alt="AI Tool 22">
+                AI Tool 22
+            </a>
+        </div>
+        <div class="card">
+            <a href="https://example.com/tool23">
+                <img src="https://example.com/tool23-image.jpg" alt="AI Tool 23">
+                AI Tool 23
+            </a>
+        </div>
+        <div class="card">
+            <a href="https://example.com/tool24">
+                <img src="https://example.com/tool24-image.jpg" alt="AI Tool 24">
+                AI Tool 24
+            </a>
+        </div>
+        <div class="card">
+            <a href="https://example.com/tool25">
+                <img src="https://example.com/tool25-image.jpg" alt="AI Tool 25">
+                AI Tool 25
+            </a>
+        </div>
+        <div class="card">
+            <a href="https://example.com/tool26">
+                <img src="https://example.com/tool26-image.jpg" alt="AI Tool 26">
+                AI Tool 26
+            </a>
+        </div>
+        <div class="card">
+            <a href="https://example.com/tool27">
+                <img src="https://example.com/tool27-image.jpg" alt="AI Tool 27">
+                AI Tool 27
+            </a>
+        </div>
+        <div class="card">
+            <a href="https://example.com/tool28">
+                <img src="https://example.com/tool28-image.jpg" alt="AI Tool 28">
+                AI Tool 28
+            </a>
+        </div>
+        <div class="card">
+            <a href="https://example.com/tool29">
+                <img src="https://example.com/tool29-image.jpg" alt="AI Tool 29">
+                AI Tool 29
+            </a>
+        </div>
+        <div class="card">
+            <a href="https://example.com/tool30">
+                <img src="https://example.com/tool30-image.jpg" alt="AI Tool 30">
+                AI Tool 30
+            </a>
+        </div>
     </div>
-    <script src="script.js"></script>
+    <div class="footer">
+        <p>AI Tools Hub - A comprehensive platform to discover and navigate through various AI tools. Enhance your projects with the best AI resources available.</p>
+    </div>
+
+    <script>
+        function filterTools() {
+            var input, filter, container, cards, a, i, txtValue;
+            input = document.getElementById('search');
+            filter = input.value.toUpperCase();
+            container = document.getElementById('tools-container');
+            cards = container.getElementsByClassName('card');
+            
+            for (i = 0; i < cards.length; i++) {
+                a = cards[i].getElementsByTagName("a")[0];
+                txtValue = a.textContent || a.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    cards[i].style.display = "";
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+        }
+    </script>
 </body>
 </html>
