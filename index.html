@@ -10,8 +10,8 @@
             margin: 0;
             padding: 0;
             background-image: url('https://static.vecteezy.com/system/resources/previews/016/458/249/original/light-bulb-doodle-icon-png.png'); /* Doodle art background */
-            background-size: contain; /* Cover the entire background */
-            background-repeat: no-repeat; /* Prevent the background from repeating */
+            background-size: contain; 
+            background-repeat: no-repeat;
             background-position: center;
             backface-visibility: visible;
             animation: fadeIn 1s;
@@ -50,7 +50,7 @@
         .search-container {
             display: flex;
             justify-content: center;
-            margin: 6rem 0 0rem 0;
+            margin: 1rem 0 1rem 0;
         }
         .search-container input {
             width: 50%;
@@ -68,8 +68,8 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            padding: 2rem;
-            margin-top: 80px; /* Ensure cards don't overlap the header */
+            padding: 1rem;
+            margin-top: 1px; 
         }
         .card {
             background-color: white;
@@ -79,12 +79,12 @@
             padding: 1rem;
             text-align: center;
             width: 200px;
-            transition: transform 0.3s, box-shadow 0.5s ease; /* Smoother transition */
+            transition: transform 0.3s, box-shadow 0.5s ease; 
             position: relative;
             overflow: hidden;
         }
 
-        /* Hover effect for smooth gradient shadow */
+        
         .card:hover {
             transform: scale(1.05);
             border-color: #0004ff;
@@ -158,9 +158,10 @@
     </div>
     <div class="search-container">
         <input type="text" id="search" placeholder="Search AI tools..." onkeyup="filterTools()">
-        <marquee>This is just a normal project we Don't claim any type of ownership.</marquee>
     </div>
     <div class="container" id="tools-container">
+        <marquee><h1>This is just a normal project we Don't claim any type of ownership.</h1><br><br></marquee>
+        <br><br>
         <div class="card">
             <a href="https://craiyon.com/" target="_blank">
                 <img src="https://i.kym-cdn.com/photos/images/newsfeed/002/389/732/59a.png" alt="AI Tool 1">
